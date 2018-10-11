@@ -7,12 +7,16 @@ body {
     padding: 10px;
     background: #f1f1f1;
 }
+.loginbody {
+	font-family: Arial;
+    padding: 10px;
+	background-image: url("https://i.ytimg.com/vi/90XbkorM8bI/maxresdefault.jpg");
+}
 
 /* Header/Blog Title */
 .header {
     padding: 30px;
     text-align: center;
-    background: white;
 }
 
 .header h1 {
@@ -52,7 +56,16 @@ body {
     float: center;
     width: 100%;
 }
-
+.login {   
+    background: #f1f1f1;
+    float: center;
+	width: 600px;
+	position: absolute;
+    left: 50%;
+    top: 50%;
+	transform: translate(-50%, -50%);
+	padding: 20px;
+}
 /* Right column */
 .rightcolumn {
     float: left;
