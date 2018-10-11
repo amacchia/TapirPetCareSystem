@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<Title>Login</Title>
+<head>
+  <link rel="Stylesheet"  href="../css/base.css"/>
+
+  <!--Firebae scripts must come before other scritps-->
+  <script src="https://www.gstatic.com/firebasejs/5.5.3/firebase.js"></script>
+  <script>
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyBVctVs-bh4ItOTNfrAYE2Ahd7PO1KLMRg",
+      authDomain: "tapir-pet-care-system.firebaseapp.com",
+      databaseURL: "https://tapir-pet-care-system.firebaseio.com",
+      projectId: "tapir-pet-care-system",
+      storageBucket: "tapir-pet-care-system.appspot.com",
+      messagingSenderId: "372234141465"
+    };
+    firebase.initializeApp(config);
+  </script>
+
+  <script type="text/javascript" src="../scripts/main.js"></script>
+  <script type="text/javascript" src="../scripts/registration.js"></script>
+  <script type="text/javascript" src="../scripts/login.js"></script>
+</head>
+<body class="loginbody">
+
+
+<div class="login">
+	  <label for="email"><b>Username</b></label>
+      <input id="logusername" type="text" placeholder="Enter Username" name="email" required>
+	  
+      <label for="psw"><b>Password</b></label>
+      <input id="logpassword" type="password" placeholder="Enter Password" name="psw" required>
+
+      <div class="clearfix">
+      <button type="submit" href="home.html" class="button" onclick="">Login</button>
+      </div>
+ </div>
+
+</body>
+</html>
