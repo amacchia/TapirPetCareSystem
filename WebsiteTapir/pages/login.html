@@ -19,8 +19,7 @@
     firebase.initializeApp(config);
   </script>
 
-  <script type="text/javascript" src="../scripts/main.js"></script>
-  <script type="text/javascript" src="../scripts/registration.js"></script>
+  <script type="text/javascript" src="../scripts/DatabaseUtils.js"></script>
   <script type="text/javascript" src="../scripts/login.js"></script>
 </head>
 <body class="loginbody">
@@ -34,7 +33,7 @@
       <input id="logpassword" type="password" placeholder="Enter Password" name="psw" required>
 
       <div class="clearfix">
-      <button type="submit" href="home.html" class="button" onclick="">Login</button>
+      <button type="submit" href="home.html" class="button" onclick="login()">Login</button>
       </div>
  </div>
 

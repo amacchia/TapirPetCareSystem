@@ -1,9 +1,14 @@
-// Get the modal
-var modal = document.getElementById('id01');
+function login() {
 
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
+    // Get the data from the fields
+    var username = document.getElementById('logusername').value;
+    var password = document.getElementById('logpassword').value;
+
+    // The Promise returned from the getUser function
+    var userPromise = getUser(username, password);
+    
+    // Get the value of the Promise, and log it for now
+    userPromise.then(function (user){
+            console.log(user);
+    });
 }

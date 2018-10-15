@@ -3,7 +3,24 @@
 <Title>Shop</Title>
 <head>
 <link rel="Stylesheet"  href="../css/base.css"/>
+
+<!--Firebae scripts must come before other scritps-->
+<script src="https://www.gstatic.com/firebasejs/5.5.3/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyBVctVs-bh4ItOTNfrAYE2Ahd7PO1KLMRg",
+    authDomain: "tapir-pet-care-system.firebaseapp.com",
+    databaseURL: "https://tapir-pet-care-system.firebaseio.com",
+    projectId: "tapir-pet-care-system",
+    storageBucket: "tapir-pet-care-system.appspot.com",
+    messagingSenderId: "372234141465"
+  };
+  firebase.initializeApp(config);
+</script>
+
 <script type="text/javascript" src="../scripts/login.js"></script>
+<script type="text/javascript" src="../scripts/DatabaseUtils.js"></script>
 </head>
 <body>
 
