@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<Title>Home</Title>
+<head>
+  <link rel="Stylesheet"  href="../css/base.css"/>
+
+  <!--Firebae scripts must come before other scritps-->
+  <script src="https://www.gstatic.com/firebasejs/5.5.3/firebase.js"></script>
+  <script>
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyBVctVs-bh4ItOTNfrAYE2Ahd7PO1KLMRg",
+      authDomain: "tapir-pet-care-system.firebaseapp.com",
+      databaseURL: "https://tapir-pet-care-system.firebaseio.com",
+      projectId: "tapir-pet-care-system",
+      storageBucket: "tapir-pet-care-system.appspot.com",
+      messagingSenderId: "372234141465"
+    };
+    firebase.initializeApp(config);
+	window.setInterval(function(){loadUser();}, 1000);
+  </script>
+
+  <script type="text/javascript" src="../scripts/DatabaseUtils.js"></script>
+  <script type="text/javascript" src="../scripts/registration.js"></script>
+  <script type="text/javascript" src="../scripts/login.js"></script>
+
+</head>
+<body onload="loadUser()">
+
+<div class="header">
+  <h1>TAPIR CARING GAME</h1>
+  <p>Tapir Technology</p>
+</div>
+
+<div class="topnav">
+  <a href="home.html">Home</a>
+  <a href="pet.html">Pet</a>
+  <a href="shop.html">Shop</a>
+  <a href="games.html">Games</a>
+  <a onclick="logOff()" style="float:right">Log Off</a>
+</div>
+
+<div class="row">
+  <div class="leftcolumn">
+    <div class="card">
+      <h2>News</h2>
+      <h5>Title description, Dec 7, 2017</h5>
+      <div class="fakeimg" style="height:200px;">Image</div>
+      <p>Some text..</p>
+      <p>content</p>
+    </div>
+  </div>
+  <div class="rightcolumn">
+    <div class="card">
+      <h2 id="username"></h2>
+      <div class="fakeimg" style="height:100px;">Image</div>
+	  <p id="petName"></p>
+      <p id="petHealth"></p>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+</div>
+
+</body>
+</html>
