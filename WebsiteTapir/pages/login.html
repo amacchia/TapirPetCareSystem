@@ -17,15 +17,16 @@
       messagingSenderId: "372234141465"
     };
     firebase.initializeApp(config);
+	localStorage.clear();
+	window.setInterval(function(){loadUser();}, 1000);
   </script>
 
   <script type="text/javascript" src="../scripts/DatabaseUtils.js"></script>
   <script type="text/javascript" src="../scripts/login.js"></script>
 </head>
-<body class="loginbody">
+<body class="loginbody" onload="loadUser()">
 
-
-<div class="login">
+<div class="login" >
 	  <label for="email"><b>Username</b></label>
       <input id="logusername" type="text" placeholder="Enter Username" name="email" required>
 	  
@@ -35,6 +36,7 @@
       <div class="clearfix">
       <button type="submit" href="home.html" class="button" onclick="login()">Login</button>
       </div>
+	  <p id="error"></p>
  </div>
 
 </body>
