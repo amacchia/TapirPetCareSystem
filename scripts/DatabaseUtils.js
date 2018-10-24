@@ -119,9 +119,9 @@ function updatePage(username, password) {
 				localStorage.localUsername = user.username;
 				localStorage.localPassword = user.password;
 				try {
-					document.getElementById("username").innerHTML = user.username;
-					document.getElementById("petName").innerHTML = user.petName;
-					document.getElementById("petHealth").innerHTML = user.petHealth;		
+					document.getElementById("username").innerHTML = "Username: " + user.username;
+					document.getElementById("petName").innerHTML = "Pet Name: " + user.petName;
+					document.getElementById("petHealth").innerHTML = "Pet Health: " + user.petHealth;		
 				}
 				catch(err){
 				}
