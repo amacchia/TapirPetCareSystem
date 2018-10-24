@@ -31,7 +31,7 @@ function update(){
         // up arrow or space
       if(!player.jumping){
        player.jumping = true;
-       player.velY = -player.speed*2;
+       player.velY = -player.speed*1.4;
       }
     }
       if (rand == 1 || rand == 7 ) {
@@ -58,8 +58,8 @@ function update(){
     
     if (player.x >= width-player.width) {
         player.x = width-player.width;
-    } else if (player.x <= 0) {
-        player.x = 0;
+    } else if (player.x <= 125) {
+        player.x = 125;
     }
   
     if(player.y >= height-player.height){
@@ -73,7 +73,7 @@ make_player(rand);
   //ctx.fillStyle = "red";
   //ctx.fillRect(player.x, player.y, player.width, player.height);
   
-  setTimeout(function () {requestAnimationFrame(update)}, 125);
+  setTimeout(function () {requestAnimationFrame(update)}, 800);
 }
 
 function make_player(rand)
