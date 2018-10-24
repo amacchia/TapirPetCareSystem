@@ -106,7 +106,10 @@ document.body.addEventListener("keyup", function(e) {
     keys[e.keyCode] = false;
 });
 
-
-window.addEventListener("load",function(){
-    update();
-});
+var localstatus = localStorage.getItem('userStatus');
+if(localstatus == "loggedin")
+{
+	window.addEventListener("load",function(){
+		update();
+	});
+}
