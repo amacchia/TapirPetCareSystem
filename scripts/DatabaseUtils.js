@@ -20,8 +20,9 @@ function createUser(user) {
         }
 
         if (isTaken) {
-            alert("Username is alreadyTaken");
-        } else {
+			document.getElementById("error").innerHTML = "Username is alreadyTaken!";
+        } 
+		else {
             // Write user to db
             database.ref('/users/' + user.username).set(user);
 
@@ -55,13 +56,14 @@ function getUser(username, password) {
             if (name == username && pwrd == password) {
 				localStorage.localUsername = user.username;
 				localStorage.localPassword = user.password;
-				localStorage.userStatus = "loggedin";
+				localStorage.userStatus = "online";
 				window.location = "home.html";
 				return user;
             }
 			//does not work but should return "Username does not exist!" when there is no user with that name
-			if (name != user.username) {
+			if (name != username) {
 				document.getElementById("error").innerHTML = "Username does not exist!";
+				
             }
 			//returns "wrong password if user is found but the password does not match
 			if (name == username && pwrd != password) {
@@ -77,13 +79,13 @@ function getUser(username, password) {
 function loadUser()
 {
 	var localstatus = localStorage.getItem('userStatus');
-	if(localstatus != "loggedin")
+	if(localstatus != "online")
 	{
-		if(localstatus == "loggedout"){
+		if(localstatus == "offline"){
 			window.location = 'login.html';
 		}
 	}
-	if(localstatus == "loggedin")
+	if(localstatus == "online")
 	{
 		updatePage(localStorage.localUsername, localStorage.localPassword);
 
@@ -92,7 +94,7 @@ function loadUser()
 
 //log user off
 function logOff(){
-	localStorage.userStatus = "loggedout";
+	localStorage.userStatus = "offline";
 }
 
 function updatePage(username, password) {
@@ -124,6 +126,7 @@ function updatePage(username, password) {
 					document.getElementById("petHealth").innerHTML = "Pet Health: " + user.petHealth;		
 				}
 				catch(err){
+					logOff();
 				}
             }
         }

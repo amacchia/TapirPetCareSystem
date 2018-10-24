@@ -68,12 +68,10 @@ function update(){
     }
   ctx.clearRect(0,0,width,height);
   
-make_background();
-make_player(rand);
-  //ctx.fillStyle = "red";
-  //ctx.fillRect(player.x, player.y, player.width, player.height);
+	make_background();
+	make_player(rand);
   
-  setTimeout(function () {requestAnimationFrame(update)}, 800);
+  setTimeout(function () {requestAnimationFrame(update)}, 750);
 }
 
 function make_player(rand)
@@ -90,13 +88,12 @@ function make_player(rand)
   }
   ctx.drawImage(base_image, player.x, player.y, player.width, player.height);
 }
+
 function make_background()
 {
   house = new Image();
   house.src = '../images/background.png';
   ctx.drawImage(house, 0, 0, 800, 600);
-  //ctx.drawImage(tree, player.x, 0, 800, 600);
-  //ctx.drawImage(tree, player.x - 800, 0, 800, 600);
 }
 document.body.addEventListener("keydown", function(e) {
     keys[e.keyCode] = true;
@@ -107,7 +104,7 @@ document.body.addEventListener("keyup", function(e) {
 });
 
 var localstatus = localStorage.getItem('userStatus');
-if(localstatus == "loggedin")
+if(localstatus == "online")
 {
 	window.addEventListener("load",function(){
 		update();
