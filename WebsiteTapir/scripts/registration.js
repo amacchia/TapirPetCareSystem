@@ -9,7 +9,8 @@ function addUser() {
         "username": username,
         "password": password,
         "petHealth": 100,
-        "petName": petname
+        "petName": petname,
+        "currency": 500
     }
 
     // Try to add user to the database
