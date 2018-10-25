@@ -10,7 +10,13 @@ function addUser() {
         "password": password,
         "petHealth": 100,
         "petName": petname,
-        "currency": 500
+        "currency": 500,
+        "inventory": {
+            "kibble": 0,
+            "brush": 0,
+            "ball": 0,
+            "shampoo": 0
+        }
     }
 
     // Try to add user to the database
