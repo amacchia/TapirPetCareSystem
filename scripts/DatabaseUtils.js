@@ -122,6 +122,7 @@ function updatePage(username, password) {
 				localStorage.localPassword = user.password;
 				try {
 					document.getElementById("username").innerHTML = "Username: " + user.username;
+					document.getElementById("currency").innerHTML = "Currency: " + user.currency;
 					document.getElementById("petName").innerHTML = "Pet Name: " + user.petName;
 					document.getElementById("petHealth").innerHTML = "Pet Health: " + user.petHealth;		
 				}
