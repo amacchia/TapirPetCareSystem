@@ -134,10 +134,43 @@ function updatePage(username, password) {
     });
 }
 
-function updateUser(username, password) {
+/**
+ * Updates a users information in the database.
+ * Changes should be passed in as a JSON object with
+ * the desired changes made to the desired field.
+ * 
+ * For example, to change pet name: Pass in {petName:"new name"}
+ */
+function updateUser(username, changes) {
+    // Reference to the user
+    var userRef = database.ref('/users/' + username);
 
+    // Update the database
+    userRef.update(changes);
 }
 
-function deleteUser(username, password) {
-    
+/**
+ * Updates a users inventory in the database.
+ * Changes should be passed in as a JSON object with
+ * the desired changes made to the desired field.
+ * 
+ * For example, to change the amount of balls a pet has: Pass in {ball:"10"}
+ */
+function updateUserInventory(username, changes) {
+    // Reference to the user
+    var userRef = database.ref('/users/' + username + '/inventory');
+
+    // Update the database
+    userRef.update(changes);
+}
+
+/**
+ * Removes a user from the database
+ */
+function deleteUser(username) {
+    // Reference to the user
+    var userRef = database.ref('/users/' + username)
+
+    // Delete the user
+    userRef.remove();
 }
