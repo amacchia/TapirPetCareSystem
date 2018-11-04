@@ -22,6 +22,7 @@
 
 <script type="text/javascript" src="../scripts/login.js"></script>
 <script type="text/javascript" src="../scripts/DatabaseUtils.js"></script>
+<script type="text/javascript" src="../scripts/store.js"></script>
 </head>
 <body>
 
@@ -42,8 +43,20 @@
 <div class="row">
   <div class="leftcolumn">
     <div class="card">
-      <h2>Shop</h2>
-      <p>Content..</p>
+      <div class="grid-container">
+        <div class="grid-item">
+          <button type="button" id="btn_ball" onclick="buyItem('ball')">Purchase Ball</button>
+        </div>
+        <div class="grid-item">
+          <button type="button" id="btn_brush" onclick="buyItem('brush')">Purchase Brush</button>
+        </div>
+        <div class="grid-item">
+          <button type="button" id="btn_kibble" onclick="buyItem('kibble')">Purchase Kibble</button>
+        </div>
+        <div class="grid-item">
+          <button type="button" id="btn_shampoo" onclick="buyItem('shampoo')">Purchase Shampoo</button>
+        </div>
+      </div>
     </div>
   </div>
   <div class="rightcolumn">

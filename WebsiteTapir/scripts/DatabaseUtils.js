@@ -157,7 +157,7 @@ function updateUser(username, changes) {
  * For example, to change the amount of balls a pet has: Pass in {ball:"10"}
  */
 function updateUserInventory(username, changes) {
-    // Reference to the user
+    // Reference to the user's inventory
     var userRef = database.ref('/users/' + username + '/inventory');
 
     // Update the database
