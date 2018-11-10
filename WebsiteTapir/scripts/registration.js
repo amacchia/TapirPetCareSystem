@@ -4,8 +4,17 @@ function addUser() {
     var password = document.getElementById('regpassword').value;
 	var passwordrepeat = document.getElementById('regpasswordrepeat').value;
     var petname = document.getElementById('regpetname').value;
+    var colors = document.getElementsByName('color');
+    var petcolor;
+    for (let index = 0; index < colors.length; index++) {
+        const color = colors[index];
+        if (color.checked) {
+            petcolor = color.value;
+            break;
+        }
+    }
 
-	if(password == passwordrepeat && username != "" && petname != "")
+	if(password == passwordrepeat && username != "" && petname != "" && password.length >= 6)
 	{
     // Once user class is created, create user object
     var user = {
@@ -14,6 +23,7 @@ function addUser() {
         "petHealth": 100,
         "petName": petname,
         "currency": 500,
+        "petColor": petcolor,
         "inventory": {
             "kibble": 0,
             "brush": 0,
@@ -33,5 +43,8 @@ function addUser() {
 	}
 	else if(petname == ""){
 		document.getElementById("error").innerHTML = "Missing pet name!";
-	}
+    }
+    else if(password.length < 6) {
+        document.getElementById("error").innerHTML = "Password must be at least 6 characters long!";
+    }
 }
