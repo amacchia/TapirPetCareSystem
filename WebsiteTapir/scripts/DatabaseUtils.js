@@ -124,7 +124,14 @@ function updatePage(username, password) {
 					document.getElementById("username").innerHTML = "Username: " + user.username;
 					document.getElementById("currency").innerHTML = "Currency: " + user.currency;
 					document.getElementById("petName").innerHTML = "Pet Name: " + user.petName;
-					document.getElementById("petHealth").innerHTML = "Pet Health: " + user.petHealth;		
+					document.getElementById("petHealth").innerHTML = "Pet Health: " + user.petHealth;
+					var userRef = database.ref('/users/' + localStorage.localUsername + '/inventory/');
+					userRef.once("value").then(function(snapshot) {
+					document.getElementById("invBall").innerHTML = "Ball: " + snapshot.val()["ball"];
+					document.getElementById("invBrush").innerHTML = "Brush: " + snapshot.val()["brush"];
+					document.getElementById("invKibble").innerHTML = "Kibble: " + snapshot.val()["kibble"];
+					document.getElementById("invShampoo").innerHTML = "Shampoo: " + snapshot.val()["shampoo"];
+					});
 				}
 				catch(err){
 					logOff();

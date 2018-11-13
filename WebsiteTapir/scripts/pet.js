@@ -103,6 +103,70 @@ document.body.addEventListener("keyup", function(e) {
     keys[e.keyCode] = false;
 });
 
+const ballCond = 70;
+const brushCond = 20;
+const kibbleCond = 50;
+const shampooCond = 100;
+
+function useItem(item) {
+    var username = document.getElementById("username").textContent.substr(10);
+    var petCond = Number(document.getElementById("petHealth").textContent.substr(12)); 
+    var itemCond;
+    switch (item) {
+        case "ball":
+            itemCond = ballCond;
+            break;
+        case "brush":
+            itemCond = brushCond;
+            break;
+        case "kibble":
+            itemCond = kibbleCond;
+            break;
+        case "shampoo":
+            itemCond = shampooCond;
+            break;
+    }
+
+    if (petCond >= 100) {
+        alert("Condition is already max");
+    } else {
+        // Reference to the user's inventory
+        var userRef = database.ref('/users/' + username + '/inventory/');
+
+        // Get the current value of an item and increment it
+        userRef.once("value").then(function(snapshot) {
+            // Pass in item here in case function ends before read is finished
+            var itemName = item;
+
+            var currentValue = snapshot.val()[itemName];
+			if(currentValue > 0)
+			{
+				var newValue = currentValue - 1;
+				var updatedItem = {
+					[itemName]: newValue
+				}
+
+				var newCond = petCond + itemCond;
+				if(newCond >= 100)
+				{
+					newCond = 100;
+				}
+				var updatedCondition = {
+					petHealth: newCond
+				}
+
+				// Update the user's inventory and currency
+				updateUserInventory(username, updatedItem);
+				updateUser(username, updatedCondition);
+			}
+			else
+			{
+				alert("Don't own any");
+			}	
+        });
+    }
+}
+
 var localstatus = localStorage.getItem('userStatus');
 if(localstatus == "online")
 {
