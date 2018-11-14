@@ -56,6 +56,7 @@ function getUser(username, password) {
             if (name == username && pwrd == password) {
 				localStorage.localUsername = user.username;
 				localStorage.localPassword = user.password;
+				localStorage.localPetColor = user.petColor;
 				localStorage.userStatus = "online";
 				window.location = "home.html";
 				return user;
@@ -120,9 +121,22 @@ function updatePage(username, password) {
             if (name == username && pwrd == password) {
 				localStorage.localUsername = user.username;
 				localStorage.localPassword = user.password;
+				localStorage.localPetColor = user.petColor;
 				try {
 					document.getElementById("username").innerHTML = "Username: " + user.username;
 					document.getElementById("currency").innerHTML = "Currency: " + user.currency;
+					if(localStorage.localPetColor == "red")
+					{
+						document.getElementById('img').src='../images/red.png';
+					}
+					else if(localStorage.localPetColor == "green")
+					{
+						document.getElementById('img').src='../images/Tapir.png';
+					}
+					else if(localStorage.localPetColor == "blue")
+					{
+						document.getElementById('img').src='../images/blue.png';
+					} 		
 					document.getElementById("petName").innerHTML = "Pet Name: " + user.petName;
 					document.getElementById("petHealth").innerHTML = "Pet Health: " + user.petHealth;
 					var userRef = database.ref('/users/' + localStorage.localUsername + '/inventory/');

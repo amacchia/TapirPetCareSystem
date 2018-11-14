@@ -70,21 +70,55 @@ function update(){
   
 	make_background();
 	make_player(rand);
-  
+
   setTimeout(function () {requestAnimationFrame(update)}, 750);
 }
 
 function make_player(rand)
 {
   base_image = new Image();
-  base_image.src = '../images/Tapir.png';
+  petcolor = localStorage.localPetColor;
+  if(petcolor == "red")
+  {
+	  base_image.src = '../images/red.png';
+  }
+  else if(petcolor == "green")
+  {
+	base_image.src = '../images/Tapir.png';
+  }
+  else if(petcolor == "blue")
+  {
+	  base_image.src = '../images/blue.png';
+  } 
   if (rand == 1 || rand == 7 ) {
   //right image
-  base_image.src = '../images/Tapir2.png';
+    if(petcolor == "red")
+	{
+		base_image.src = '../images/red2.png';
+	}
+	else if(petcolor == "green")
+	{
+		base_image.src = '../images/Tapir2.png';
+	}
+	else if(petcolor == "blue")
+	{
+		base_image.src = '../images/blue2.png';
+	} 
   }
   if (rand == 3 || rand == 6 ) {
   //left image
-  base_image.src = '../images/Tapir.png';
+    if(petcolor == "red")
+	{
+		base_image.src = '../images/red.png';
+	}
+	else if(petcolor == "green")
+	{
+		base_image.src = '../images/Tapir.png';
+	}
+	else if(petcolor == "blue")
+	  {
+		base_image.src = '../images/blue.png';
+	} 
   }
   ctx.drawImage(base_image, player.x, player.y, player.width, player.height);
 }
