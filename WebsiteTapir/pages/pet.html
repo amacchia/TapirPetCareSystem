@@ -48,39 +48,53 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 	      <canvas id="canvas" width="800" height="600"></canvas>
 	 <script src="../scripts/pet.js" type="text/javascript"></script>
-	  <p id="petName"></p>
-      <p id="petHealth"></p>
+	
 	  <img id="img" src="" style="display: none;" />
 	       <div class="grid-container">
-        <div class="grid-item">
+	  <div id = "restart" style="display: none;" class="petcolor">
+		<p>Your pet is dead!</p>
+		<button type="button" id="restartSim" onclick="restart()">Restart</button>
+        <input id="rpetname" type="text" placeholder="Enter Pet name" name="pet name" required>
+        <input  type="radio" name="color" value="green" id="rgreen" checked>Green
+        <input  type="radio" name="color" value="blue" id="rblue">Blue
+        <input type="radio" name="color" value="red" id="rred"> Red<br>
+      </div>
+	  <div id="info">
+	  <p id="petName"></p>
+      <p id="petHealth"></p>
+	  <div class="invo-container">
+        <div class="invo-item">
 		  <p id="invBall"></p>
           <p>
             Health: 70
           </p>
           <button type="button" id="btn_ball" onclick="useItem('ball')">Use Ball</button>
-        </div>
-        <div class="grid-item">
+		</div>
+        <div class="invo-item">
 			<p id="invBrush"></p>
             <p>
                Health: 20
             </p>
           <button type="button" id="btn_brush" onclick="useItem('brush')">Use Brush</button>
         </div>
-        <div class="grid-item">
+        <div class="invo-item">
 			<p id="invKibble"></p>
             <p>
               Health: 50
             </p>
           <button type="button" id="btn_kibble" onclick="useItem('kibble')">Use Kibble</button>
         </div>
-        <div class="grid-item">
+        <div class="invo-item">
 			<p id="invShampoo"></p>
             <p>
               Health: 100
             </p>
           <button type="button" id="btn_shampoo" onclick="useItem('shampoo')">Use Shampoo</button>
         </div>
+		</div>
+	  </div>
       </div>
+	  </div>
     </div>
   </div>
 </div>

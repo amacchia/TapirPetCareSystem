@@ -290,6 +290,8 @@ span.psw {
 /* The Grid for the store items */
 .grid-container {
     display: grid;
+	width: 100%; /* Full width */
+    height: 100%; /* Full height */
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr;
   }
@@ -297,5 +299,22 @@ span.psw {
   .grid-item {
     border: 1px solid rgba(0, 0, 0, 0.8);
     padding: 20px;
+    text-align: center;
+  }
+
+  /* The Grid for the store items */
+.invo-container {
+	width: 800px; /* Full width */
+    height: 100%; /* Full height */
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+  }
+
+  .invo-item {
+	float: left;
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    padding: 20px;
+	width: 25%; /* Full width */
+    height: 100%; /* Full height */
     text-align: center;
   }

@@ -127,7 +127,14 @@ function updatePage(username, password) {
 					    var updatedpetColor = {
 							petColor: "death"
 						}
+						document.getElementById('restart').style.display = "block"; 
+						document.getElementById('info').style.display = "none"; 
 						updateUser(localStorage.localUsername, updatedpetColor);
+				}
+				else
+				{
+					document.getElementById('restart').style.display = "none"; 
+					document.getElementById('info').style.display = "block"; 
 				}
 				localStorage.localPetColor = user.petColor;
 				try {
@@ -165,6 +172,62 @@ function updatePage(username, password) {
             }
         }
     });
+}
+
+//Restart when pet is dead
+function restart() {
+    var colors = document.getElementsByName('color');
+	var petname = document.getElementById('rpetname').value;
+    var petcolor;
+    for (let index = 0; index < colors.length; index++) {
+        const color = colors[index];
+        if (color.checked) {
+            petcolor = color.value;
+            break;
+        }
+    }
+	var petCondition = {
+        "petHealth": 100
+    }
+    var petColor = {
+        "petColor": petcolor
+    }
+	var userCurrency = {
+        "currency": 500
+    }
+	var petName = {
+        "petName": petname
+    }
+	var updatedBall = {
+        "ball": 0
+    }
+	var updatedKibble = {
+        "kibble": 0
+    }
+	var updatedBrush = {
+        "brush": 0
+    }
+	var updatedShampoo = {
+        "shampoo": 0
+    }
+	if(petname != "")
+	{
+		updateUser(localStorage.localUsername, petCondition);
+		updateUser(localStorage.localUsername, petColor);
+		updateUser(localStorage.localUsername, userCurrency);
+		updateUser(localStorage.localUsername, petName);
+		updateUserInventory(localStorage.localUsername, updatedBall);
+		updateUserInventory(localStorage.localUsername, updatedKibble);
+		updateUserInventory(localStorage.localUsername, updatedBrush);
+		updateUserInventory(localStorage.localUsername, updatedShampoo);
+	}
+}
+
+function kill(){
+    var petCondition = {
+        "petHealth": 0
+    }
+	updateUser(localStorage.localUsername, petCondition);
 }
 
 /**

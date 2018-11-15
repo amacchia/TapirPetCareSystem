@@ -51,14 +51,23 @@
       <h2 id="username"></h2>
 	  <p id="currency"></p>
       <img id="img" src="">
-	  <p id="petName"></p>
-      <p id="petHealth"></p>
-	  <h3>Inventory</h3>
-	  <p id="invBall"></p>
-      <p id="invBrush"></p>
-	  <p id="invKibble"></p>
-	  <p id="invShampoo"></p>
-    </div>
+	  <div id = "restart" style="display: none;" class="petcolor">
+		<p>Your pet is dead!</p>
+		<button type="button" id="restartSim" onclick="restart()">Restart</button>
+        <input id="rpetname" type="text" placeholder="Enter Pet name" name="pet name" required>
+        <input  type="radio" name="color" value="green" id="rgreen" checked>Green
+        <input  type="radio" name="color" value="blue" id="rblue">Blue
+        <input type="radio" name="color" value="red" id="rred"> Red<br>
+      </div>
+	  <div id = "info" style="display: block;">
+		<p id="petName"></p>
+		<p id="petHealth"></p>
+		<h3>Inventory</h3>
+		<p id="invBall"></p>
+		<p id="invBrush"></p>
+		<p id="invKibble"></p>
+		<p id="invShampoo"></p>
+	  </div>
   </div>
 </div>
 </div>
