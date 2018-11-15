@@ -223,9 +223,18 @@ function restart() {
 	}
 }
 
+ //kill pet for testing
 function kill(){
     var petCondition = {
         "petHealth": 0
+    }
+	updateUser(localStorage.localUsername, petCondition);
+}
+
+//hurt pet for testing
+function hurt(){
+    var petCondition = {
+        "petHealth": 50
     }
 	updateUser(localStorage.localUsername, petCondition);
 }
