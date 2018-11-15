@@ -162,7 +162,7 @@ function useItem(item) {
     }
 
     if (petCond >= 100) {
-        alert("Condition is already max");
+        alert("Condition is already max!");
     } else {
         // Reference to the user's inventory
         var userRef = database.ref('/users/' + username + '/inventory/');
@@ -173,7 +173,7 @@ function useItem(item) {
             var itemName = item;
 
             var currentValue = snapshot.val()[itemName];
-			if(currentValue > 0)
+			if(currentValue > 0 && localStorage.localPetHealth > 0)
 			{
 				var newValue = currentValue - 1;
 				var updatedItem = {
@@ -195,7 +195,14 @@ function useItem(item) {
 			}
 			else
 			{
-				alert("Don't own any");
+				if(localStorage.localPetHealth == 0)
+				{
+					alert("Pet is dead!");
+				}
+				else if(currentValue == 0)
+				{
+					alert("Don't own any!");
+				}
 			}	
         });
     }

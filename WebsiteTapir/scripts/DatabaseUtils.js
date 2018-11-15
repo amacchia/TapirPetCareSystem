@@ -121,6 +121,14 @@ function updatePage(username, password) {
             if (name == username && pwrd == password) {
 				localStorage.localUsername = user.username;
 				localStorage.localPassword = user.password;
+				localStorage.localPetHealth = user.petHealth;
+				if(localStorage.localPetHealth == 0)
+				{
+					    var updatedpetColor = {
+							petColor: "death"
+						}
+						updateUser(localStorage.localUsername, updatedpetColor);
+				}
 				localStorage.localPetColor = user.petColor;
 				try {
 					document.getElementById("username").innerHTML = "Username: " + user.username;
@@ -137,6 +145,10 @@ function updatePage(username, password) {
 					{
 						document.getElementById('img').src='../images/blue.png';
 					} 		
+					else if(localStorage.localPetColor == "death")
+					{
+						document.getElementById('img').src='../images/death.png';
+					} 
 					document.getElementById("petName").innerHTML = "Pet Name: " + user.petName;
 					document.getElementById("petHealth").innerHTML = "Pet Health: " + user.petHealth;
 					var userRef = database.ref('/users/' + localStorage.localUsername + '/inventory/');
