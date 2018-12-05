@@ -11,4 +11,29 @@ function login() {
     userPromise.then(function (user){
             console.log(user);
     });
+    
+    var currTime = Date.now();
+    var lastLogin = user.lastLogin;
+    var currPetHealth = user.petHealth;
+    var currCurrency = user.currency;
+    
+    if ((currTime - lastLogin) > 86400000) {
+           var newData = currCurrency + 100;
+           var updatedData = {
+               currency: newData
+           }
+           updateUser(username, updatedData);
+        
+           var newData = currPetHealth - 20;
+           var updatedData = {
+               petHealth: newData
+           }
+           updateUser(username, updatedData);
+        
+           var newData = currTime;
+           var updatedData = {
+             lastLogin: newData
+           }
+           updateUser(username, updatedData);
+    }
 }
