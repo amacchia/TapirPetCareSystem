@@ -58,6 +58,30 @@ function getUser(username, password) {
 				localStorage.localPassword = user.password;
 				localStorage.localPetColor = user.petColor;
 				localStorage.userStatus = "online";
+				    var currTime = Date.now();
+			var lastLogin = user.lastLogin;
+			var currPetHealth = user.petHealth;
+			var currCurrency = user.currency;
+    
+			if ((currTime - lastLogin) > 86400000) {
+				var newData = currCurrency + 100;
+				var updatedData = {
+				currency: newData
+				}
+				updateUser(username, updatedData);
+        
+				var newData = currPetHealth - 20;
+				var updatedData = {
+               petHealth: newData
+				}
+				updateUser(username, updatedData);
+        
+				var newData = currTime;
+				var updatedData = {
+				lastLogin: newData
+				}
+				updateUser(username, updatedData);
+				}
 				window.location = "home.html";
 				return user;
             }
@@ -122,7 +146,7 @@ function updatePage(username, password) {
 				localStorage.localUsername = user.username;
 				localStorage.localPassword = user.password;
 				localStorage.localPetHealth = user.petHealth;
-				if(localStorage.localPetHealth == 0)
+				if(localStorage.localPetHealth <= 0)
 				{
 					    var updatedpetColor = {
 							petColor: "death"

@@ -11,4 +11,6 @@ function login() {
     userPromise.then(function (user){
             console.log(user);
     });
+    
+
 }

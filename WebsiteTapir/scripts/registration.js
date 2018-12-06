@@ -29,7 +29,8 @@ function addUser() {
             "brush": 0,
             "ball": 0,
             "shampoo": 0
-        }
+        },
+	 "lastLogin": Date.now()
     }
 
     // Try to add user to the database
