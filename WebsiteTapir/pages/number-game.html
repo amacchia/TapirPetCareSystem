@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<Title>Games</Title>
+
+<head>
+    <link rel="Stylesheet" href="../css/base.css" />
+
+    <!--Firebae scripts must come before other scritps-->
+    <script src="https://www.gstatic.com/firebasejs/5.5.3/firebase.js"></script>
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyBVctVs-bh4ItOTNfrAYE2Ahd7PO1KLMRg",
+            authDomain: "tapir-pet-care-system.firebaseapp.com",
+            databaseURL: "https://tapir-pet-care-system.firebaseio.com",
+            projectId: "tapir-pet-care-system",
+            storageBucket: "tapir-pet-care-system.appspot.com",
+            messagingSenderId: "372234141465"
+        };
+        firebase.initializeApp(config);
+        window.setInterval(function () { loadUser(); }, 1000);
+    </script>
+
+    <script type="text/javascript" src="../scripts/login.js"></script>
+    <script type="text/javascript" src="../scripts/DatabaseUtils.js"></script>
+    <script type="text/javascript" src="../scripts/numberGame.js"></script>
+</head>
+
+<body onload="startGame()">
+
+    <div class="header">
+        <h1>TAPIR CARING GAME</h1>
+        <p>Tapir Technology</p>
+    </div>
+
+    <div class="topnav">
+        <a href="home.html">Home</a>
+        <a href="pet.html">Pet</a>
+        <a href="shop.html">Shop</a>
+        <a href="games.html">Games</a>
+        <a onclick="logOff()" style="float:right">Log Off</a>
+    </div>
+
+    <div class="page">
+        <div class="row">
+            <div class="leftcolumn">
+                <div class="card" align="center">
+                    <h2 align="center">Number Guessing Game</h2> 
+                    <h4>Pick a number between 1 and 100</h6>
+                    Enter Number Guess: <input id="guess" type="number"> <br>
+                    <p id="guesses-left">Guesses Left: 7</p> <br><br>
+                    <p id ="response"></p>
+                    <button type="button" id="submit" onclick="checkGuess()" style="height:40px;width:200px">Submit</button>
+                    <button type="button" id="submit" onclick="restartGame()" style="height:40px;width:200px">Restart</button>
+                </div>
+            </div>
+            <div class="rightcolumn">
+                <div class="card">
+                    <h2 id="username"></h2>
+                    <p id="currency"></p>
+                    <img id="img" src="">
+                    <div id="restart" style="display: none;" class="petcolor">
+                        <p>Your pet is dead!</p>
+                        <button type="button" id="restartSim" onclick="restart()">Restart</button>
+                        <input id="rpetname" type="text" placeholder="Enter Pet name" name="pet name" required>
+                        <input type="radio" name="color" value="green" id="rgreen" checked>Green
+                        <input type="radio" name="color" value="blue" id="rblue">Blue
+                        <input type="radio" name="color" value="red" id="rred"> Red<br>
+                    </div>
+                    <div id="info" style="display: block;">
+                        <p id="petName"></p>
+                        <p id="petHealth"></p>
+                        <h3>Inventory</h3>
+                        <p id="invBall"></p>
+                        <p id="invBrush"></p>
+                        <p id="invKibble"></p>
+                        <p id="invShampoo"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+</body>
+
+</html>
