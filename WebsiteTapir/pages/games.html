@@ -1,275 +1,297 @@
 <!DOCTYPE html>
 <html>
 <Title>Games</Title>
+
 <head>
-<link rel="Stylesheet"  href="../css/base.css"/>
+    <link rel="Stylesheet" href="../css/base.css" />
 
-<!--Firebae scripts must come before other scritps-->
-<script src="https://www.gstatic.com/firebasejs/5.5.3/firebase.js"></script>
-<script>
-  // Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyBVctVs-bh4ItOTNfrAYE2Ahd7PO1KLMRg",
-    authDomain: "tapir-pet-care-system.firebaseapp.com",
-    databaseURL: "https://tapir-pet-care-system.firebaseio.com",
-    projectId: "tapir-pet-care-system",
-    storageBucket: "tapir-pet-care-system.appspot.com",
-    messagingSenderId: "372234141465"
-  };
-  firebase.initializeApp(config);
-  window.setInterval(function(){loadUser();}, 1000);
-</script>
+    <!--Firebae scripts must come before other scritps-->
+    <script src="https://www.gstatic.com/firebasejs/5.5.3/firebase.js"></script>
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyBVctVs-bh4ItOTNfrAYE2Ahd7PO1KLMRg",
+            authDomain: "tapir-pet-care-system.firebaseapp.com",
+            databaseURL: "https://tapir-pet-care-system.firebaseio.com",
+            projectId: "tapir-pet-care-system",
+            storageBucket: "tapir-pet-care-system.appspot.com",
+            messagingSenderId: "372234141465"
+        };
+        firebase.initializeApp(config);
+        window.setInterval(function () { loadUser(); }, 1000);
+    </script>
 
-<script type="text/javascript" src="../scripts/login.js"></script>
-<script type="text/javascript" src="../scripts/DatabaseUtils.js"></script>
+    <script type="text/javascript" src="../scripts/login.js"></script>
+    <script type="text/javascript" src="../scripts/DatabaseUtils.js"></script>
 </head>
+
 <body>
 
-<div class="header">
-  <h1>TAPIR CARING GAME</h1>
-  <p>Tapir Technology</p>
-</div>
-
-<div class="topnav">
-  <a href="home.html">Home</a>
-  <a href="pet.html">Pet</a>
-  <a href="shop.html">Shop</a>
-  <a href="games.html">Games</a>
-  <a onclick="logOff()" style="float:right">Log Off</a>
-</div>
-
-<div class="page">
-<div class="row">
-  <div class="leftcolumn">
-    <div class="card">
-      <h2>Block Breaker</h2>
-	  <br></br>
-      <canvas id="myCanvas" width="480" height="320"></canvas>
+    <div class="header">
+        <h1>TAPIR CARING GAME</h1>
+        <p>Tapir Technology</p>
     </div>
-  </div>
-  <div class="rightcolumn">
-    <div class="card">
-      <h2 id="username"></h2>
-	  <p id="currency"></p>
-      <img id="img" src="">
-	  <div id = "restart" style="display: none;" class="petcolor">
-		<p>Your pet is dead!</p>
-		<button type="button" id="restartSim" onclick="restart()">Restart</button>
-        <input id="rpetname" type="text" placeholder="Enter Pet name" name="pet name" required>
-        <input  type="radio" name="color" value="green" id="rgreen" checked>Green
-        <input  type="radio" name="color" value="blue" id="rblue">Blue
-        <input type="radio" name="color" value="red" id="rred"> Red<br>
-      </div>
-	  <div id = "info" style="display: block;">
-		<p id="petName"></p>
-		<p id="petHealth"></p>
-		<h3>Inventory</h3>
-		<p id="invBall"></p>
-		<p id="invBrush"></p>
-		<p id="invKibble"></p>
-		<p id="invShampoo"></p>
-	  </div>
-  </div>
-</div>
-</div>
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <title>Gamedev Canvas Workshop - lesson 10: finishing up</title>
-    <style>* { padding: 0; margin: 0; } canvas { background: #eee; display: block; margin: 0 auto; }</style>
-</head>
-<body>
+
+    <div class="topnav">
+        <a href="home.html">Home</a>
+        <a href="pet.html">Pet</a>
+        <a href="shop.html">Shop</a>
+        <div class="dropdown">
+            <a class="dropbtn">Games</a>
+            <div class="dropdown-content">
+                <a href="games.html">Block Breaker</a>
+                <a href="number-game.html">Number Guessing Game</a>
+            </div>
+        </div>
+        <a onclick="logOff()" style="float:right">Log Off</a>
+    </div>
+
+    <div class="page">
+        <div class="row">
+            <div class="leftcolumn">
+                <div class="card">
+                    <h2>Block Breaker</h2>
+                    <br></br>
+                    <canvas id="myCanvas" width="480" height="320"></canvas>
+                </div>
+            </div>
+            <div class="rightcolumn">
+                <div class="card">
+                    <h2 id="username"></h2>
+                    <p id="currency"></p>
+                    <img id="img" src="">
+                    <div id="restart" style="display: none;" class="petcolor">
+                        <p>Your pet is dead!</p>
+                        <button type="button" id="restartSim" onclick="restart()">Restart</button>
+                        <input id="rpetname" type="text" placeholder="Enter Pet name" name="pet name" required>
+                        <input type="radio" name="color" value="green" id="rgreen" checked>Green
+                        <input type="radio" name="color" value="blue" id="rblue">Blue
+                        <input type="radio" name="color" value="red" id="rred"> Red<br>
+                    </div>
+                    <div id="info" style="display: block;">
+                        <p id="petName"></p>
+                        <p id="petHealth"></p>
+                        <h3>Inventory</h3>
+                        <p id="invBall"></p>
+                        <p id="invBrush"></p>
+                        <p id="invKibble"></p>
+                        <p id="invShampoo"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!DOCTYPE html>
+        <html>
+
+        <head>
+            <meta charset="utf-8" />
+            <title>Gamedev Canvas Workshop - lesson 10: finishing up</title>
+            <style>
+                * {
+                    padding: 0;
+                    margin: 0;
+                }
+
+                canvas {
+                    background: #eee;
+                    display: block;
+                    margin: 0 auto;
+                }
+            </style>
+        </head>
+
+        <body>
 
 
 
-<script>
-	var username = document.getElementById("username").textContent.substr(10);
-    var userFunds = Number(document.getElementById("currency").textContent.substr(10));
-    var canvas = document.getElementById("myCanvas");
-    var ctx = canvas.getContext("2d");
-    var ballRadius = 10;
-    var x = canvas.width/2;
-    var y = canvas.height-30;
-    var dx = 2;
-    var dy = -2;
-    var paddleHeight = 10;
-    var paddleWidth = 75;
-    var paddleX = (canvas.width-paddleWidth)/2;
-    var rightPressed = false;
-    var leftPressed = false;
-    var brickRowCount = 5;
-    var brickColumnCount = 3;
-    var brickWidth = 75;
-    var brickHeight = 20;
-    var brickPadding = 10;
-    var brickOffsetTop = 30;
-    var brickOffsetLeft = 30;
-    var score = 0;
-    var lives = 3;
-    var bricks = [];
-    for(var c=0; c<brickColumnCount; c++) {
-        bricks[c] = [];
-        for(var r=0; r<brickRowCount; r++) {
-            bricks[c][r] = { x: 0, y: 0, status: 1 };
-        }
-    }
-    document.addEventListener("keydown", keyDownHandler, false);
-    document.addEventListener("keyup", keyUpHandler, false);
-    document.addEventListener("mousemove", mouseMoveHandler, false);
-    function keyDownHandler(e) {
-        if(e.keyCode == 39) {
-            rightPressed = true;
-        }
-        else if(e.keyCode == 37) {
-            leftPressed = true;
-        }
-    }
-    function keyUpHandler(e) {
-        if(e.keyCode == 39) {
-            rightPressed = false;
-        }
-        else if(e.keyCode == 37) {
-            leftPressed = false;
-        }
-    }
-    function mouseMoveHandler(e) {
-        var relativeX = e.clientX - canvas.offsetLeft;
-        if(relativeX > 0 && relativeX < canvas.width) {
-            paddleX = relativeX - paddleWidth/2;
-        }
-    }
-    function collisionDetection() {
-        for(var c=0; c<brickColumnCount; c++) {
-            for(var r=0; r<brickRowCount; r++) {
-                var b = bricks[c][r];
-                if(b.status == 1) {
-                    if(x > b.x && x < b.x+brickWidth && y > b.y && y < b.y+brickHeight) {
-                        dy = -dy;
-                        b.status = 0;
-                        score++;
-                        if(score == brickRowCount*brickColumnCount) {
-						    username = document.getElementById("username").textContent.substr(10);
-							userFunds = Number(document.getElementById("currency").textContent.substr(10));
-							var newFunds = userFunds + score;
-							var updatedCurrency = {
-								currency: newFunds
-							}
-							updateUser(username, updatedCurrency);
-							alert("YOU WIN, CONGRATS!");
-                            document.location.reload();
+            <script>
+                var username = document.getElementById("username").textContent.substr(10);
+                var userFunds = Number(document.getElementById("currency").textContent.substr(10));
+                var canvas = document.getElementById("myCanvas");
+                var ctx = canvas.getContext("2d");
+                var ballRadius = 10;
+                var x = canvas.width / 2;
+                var y = canvas.height - 30;
+                var dx = 2;
+                var dy = -2;
+                var paddleHeight = 10;
+                var paddleWidth = 75;
+                var paddleX = (canvas.width - paddleWidth) / 2;
+                var rightPressed = false;
+                var leftPressed = false;
+                var brickRowCount = 5;
+                var brickColumnCount = 3;
+                var brickWidth = 75;
+                var brickHeight = 20;
+                var brickPadding = 10;
+                var brickOffsetTop = 30;
+                var brickOffsetLeft = 30;
+                var score = 0;
+                var lives = 3;
+                var bricks = [];
+                for (var c = 0; c < brickColumnCount; c++) {
+                    bricks[c] = [];
+                    for (var r = 0; r < brickRowCount; r++) {
+                        bricks[c][r] = { x: 0, y: 0, status: 1 };
+                    }
+                }
+                document.addEventListener("keydown", keyDownHandler, false);
+                document.addEventListener("keyup", keyUpHandler, false);
+                document.addEventListener("mousemove", mouseMoveHandler, false);
+                function keyDownHandler(e) {
+                    if (e.keyCode == 39) {
+                        rightPressed = true;
+                    }
+                    else if (e.keyCode == 37) {
+                        leftPressed = true;
+                    }
+                }
+                function keyUpHandler(e) {
+                    if (e.keyCode == 39) {
+                        rightPressed = false;
+                    }
+                    else if (e.keyCode == 37) {
+                        leftPressed = false;
+                    }
+                }
+                function mouseMoveHandler(e) {
+                    var relativeX = e.clientX - canvas.offsetLeft;
+                    if (relativeX > 0 && relativeX < canvas.width) {
+                        paddleX = relativeX - paddleWidth / 2;
+                    }
+                }
+                function collisionDetection() {
+                    for (var c = 0; c < brickColumnCount; c++) {
+                        for (var r = 0; r < brickRowCount; r++) {
+                            var b = bricks[c][r];
+                            if (b.status == 1) {
+                                if (x > b.x && x < b.x + brickWidth && y > b.y && y < b.y + brickHeight) {
+                                    dy = -dy;
+                                    b.status = 0;
+                                    score++;
+                                    if (score == brickRowCount * brickColumnCount) {
+                                        username = document.getElementById("username").textContent.substr(10);
+                                        userFunds = Number(document.getElementById("currency").textContent.substr(10));
+                                        var newFunds = userFunds + score;
+                                        var updatedCurrency = {
+                                            currency: newFunds
+                                        }
+                                        updateUser(username, updatedCurrency);
+                                        alert("YOU WIN, CONGRATS!");
+                                        document.location.reload();
+                                    }
+                                }
+                            }
                         }
                     }
                 }
-            }
-        }
-    }
-    function drawBall() {
-        ctx.beginPath();
-        ctx.arc(x, y, ballRadius, 0, Math.PI*2);
-        ctx.fillStyle = "#0095DD";
-        ctx.fill();
-        ctx.closePath();
-    }
-    function drawPaddle() {
-        ctx.beginPath();
-        ctx.rect(paddleX, canvas.height-paddleHeight, paddleWidth, paddleHeight);
-        ctx.fillStyle = "#0095DD";
-        ctx.fill();
-        ctx.closePath();
-    }
-    function drawBricks() {
-        for(var c=0; c<brickColumnCount; c++) {
-            for(var r=0; r<brickRowCount; r++) {
-                if(bricks[c][r].status == 1) {
-                    var brickX = (r*(brickWidth+brickPadding))+brickOffsetLeft;
-                    var brickY = (c*(brickHeight+brickPadding))+brickOffsetTop;
-                    bricks[c][r].x = brickX;
-                    bricks[c][r].y = brickY;
+                function drawBall() {
                     ctx.beginPath();
-                    ctx.rect(brickX, brickY, brickWidth, brickHeight);
+                    ctx.arc(x, y, ballRadius, 0, Math.PI * 2);
                     ctx.fillStyle = "#0095DD";
                     ctx.fill();
                     ctx.closePath();
                 }
-            }
-        }
-    }
-    function drawScore() {
-        ctx.font = "16px Arial";
-        ctx.fillStyle = "#0095DD";
-        ctx.fillText("Score: "+score, 8, 20);
-    }
-    function drawLives() {
-        ctx.font = "16px Arial";
-        ctx.fillStyle = "#0095DD";
-        ctx.fillText("Lives: "+lives, canvas.width-65, 20);
-    }
-    function draw() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        drawBricks();
-        drawBall();
-        drawPaddle();
-        drawScore();
-        drawLives();
-        collisionDetection();
-        if(x + dx > canvas.width-ballRadius || x + dx < ballRadius) {
-            dx = -dx;
-        }
-        if(y + dy < ballRadius) {
-            dy = -dy;
-        }
-        else if(y + dy > canvas.height-ballRadius) {
-            if(x > paddleX && x < paddleX + paddleWidth) {
-                dy = -dy;
-            }
-            else {
-                lives--;
-                if(!lives) {
-					username = document.getElementById("username").textContent.substr(10);
-					userFunds = Number(document.getElementById("currency").textContent.substr(10));
-					var newFunds = userFunds + score;
-					var updatedCurrency = {
-						currency: newFunds
-					}
-					updateUser(username, updatedCurrency);
-                    alert("GAME OVER");
-                    document.location.reload();
+                function drawPaddle() {
+                    ctx.beginPath();
+                    ctx.rect(paddleX, canvas.height - paddleHeight, paddleWidth, paddleHeight);
+                    ctx.fillStyle = "#0095DD";
+                    ctx.fill();
+                    ctx.closePath();
                 }
-                else {
-                    x = canvas.width/2;
-                    y = canvas.height-30;
-                    dx = 3;
-                    dy = -3;
-                    paddleX = (canvas.width-paddleWidth)/2;
+                function drawBricks() {
+                    for (var c = 0; c < brickColumnCount; c++) {
+                        for (var r = 0; r < brickRowCount; r++) {
+                            if (bricks[c][r].status == 1) {
+                                var brickX = (r * (brickWidth + brickPadding)) + brickOffsetLeft;
+                                var brickY = (c * (brickHeight + brickPadding)) + brickOffsetTop;
+                                bricks[c][r].x = brickX;
+                                bricks[c][r].y = brickY;
+                                ctx.beginPath();
+                                ctx.rect(brickX, brickY, brickWidth, brickHeight);
+                                ctx.fillStyle = "#0095DD";
+                                ctx.fill();
+                                ctx.closePath();
+                            }
+                        }
+                    }
                 }
-            }
-        }
-        if(rightPressed && paddleX < canvas.width-paddleWidth) {
-            paddleX += 7;
-        }
-        else if(leftPressed && paddleX > 0) {
-            paddleX -= 7;
-        }
-        x += dx;
-        y += dy;
-        requestAnimationFrame(draw);
-    }
-	var localstatus = localStorage.getItem('userStatus');
-if(localstatus == "online")
-{
-	window.addEventListener("load",function(){
-		draw();
-	});
-}
-    
-</script>
+                function drawScore() {
+                    ctx.font = "16px Arial";
+                    ctx.fillStyle = "#0095DD";
+                    ctx.fillText("Score: " + score, 8, 20);
+                }
+                function drawLives() {
+                    ctx.font = "16px Arial";
+                    ctx.fillStyle = "#0095DD";
+                    ctx.fillText("Lives: " + lives, canvas.width - 65, 20);
+                }
+                function draw() {
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    drawBricks();
+                    drawBall();
+                    drawPaddle();
+                    drawScore();
+                    drawLives();
+                    collisionDetection();
+                    if (x + dx > canvas.width - ballRadius || x + dx < ballRadius) {
+                        dx = -dx;
+                    }
+                    if (y + dy < ballRadius) {
+                        dy = -dy;
+                    }
+                    else if (y + dy > canvas.height - ballRadius) {
+                        if (x > paddleX && x < paddleX + paddleWidth) {
+                            dy = -dy;
+                        }
+                        else {
+                            lives--;
+                            if (!lives) {
+                                username = document.getElementById("username").textContent.substr(10);
+                                userFunds = Number(document.getElementById("currency").textContent.substr(10));
+                                var newFunds = userFunds + score;
+                                var updatedCurrency = {
+                                    currency: newFunds
+                                }
+                                updateUser(username, updatedCurrency);
+                                alert("GAME OVER");
+                                document.location.reload();
+                            }
+                            else {
+                                x = canvas.width / 2;
+                                y = canvas.height - 30;
+                                dx = 3;
+                                dy = -3;
+                                paddleX = (canvas.width - paddleWidth) / 2;
+                            }
+                        }
+                    }
+                    if (rightPressed && paddleX < canvas.width - paddleWidth) {
+                        paddleX += 7;
+                    }
+                    else if (leftPressed && paddleX > 0) {
+                        paddleX -= 7;
+                    }
+                    x += dx;
+                    y += dy;
+                    requestAnimationFrame(draw);
+                }
+                var localstatus = localStorage.getItem('userStatus');
+                if (localstatus == "online") {
+                    window.addEventListener("load", function () {
+                        draw();
+                    });
+                }
+
+            </script>
+
+        </body>
+
+        </html>
+
+        <div class="footer">
+        </div>
 
 </body>
-</html>
 
-<div class="footer"> 
-</div>
-
-</body>
 </html>

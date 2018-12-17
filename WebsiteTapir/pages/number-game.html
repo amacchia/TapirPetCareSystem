@@ -37,7 +37,13 @@
         <a href="home.html">Home</a>
         <a href="pet.html">Pet</a>
         <a href="shop.html">Shop</a>
-        <a href="games.html">Games</a>
+        <div class="dropdown">
+            <a class="dropbtn">Games</a>
+            <div class="dropdown-content">
+                <a href="games.html">Block Breaker</a>
+                <a href="number-game.html">Number Guessing Game</a>
+            </div>
+        </div>
         <a onclick="logOff()" style="float:right">Log Off</a>
     </div>
 
@@ -45,13 +51,13 @@
         <div class="row">
             <div class="leftcolumn">
                 <div class="card" align="center">
-                    <h2 align="center">Number Guessing Game</h2> 
+                    <h2 align="center">Number Guessing Game</h2>
                     <h4>Pick a number between 1 and 100</h6>
-                    Enter Number Guess: <input id="guess" type="number"> <br>
-                    <p id="guesses-left">Guesses Left: 7</p> <br><br>
-                    <p id ="response"></p>
-                    <button type="button" id="submit" onclick="checkGuess()" style="height:40px;width:200px">Submit</button>
-                    <button type="button" id="submit" onclick="restartGame()" style="height:40px;width:200px">Restart</button>
+                        Enter Number Guess: <input id="guess" type="number"> <br>
+                        <p id="guesses-left">Guesses Left: 7</p> <br><br>
+                        <p id="response"></p>
+                        <button type="button" id="submit" onclick="checkGuess()" style="height:40px;width:200px">Submit</button>
+                        <button type="button" id="submit" onclick="restartGame()" style="height:40px;width:200px">Restart</button>
                 </div>
             </div>
             <div class="rightcolumn">
