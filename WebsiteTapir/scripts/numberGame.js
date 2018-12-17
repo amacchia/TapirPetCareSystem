@@ -13,14 +13,14 @@ function startGame() {
 
 function checkGuess() {
     var guess = document.getElementById("guess").value;
-    
+
     if (isNaN(guess) || guess > 100 || guess < 1) {
         alert("Please Enter a Valid Number");
         return;
     }
 
     guess = Number(guess);
-    
+
     if (remainingGuesses === 0) {
         return;
     } else if (guess < secretNumber) {
@@ -29,6 +29,14 @@ function checkGuess() {
         document.getElementById("response").innerHTML = responseTooHigh;
     } else {
         document.getElementById("response").innerHTML = responseWin;
+
+        username = document.getElementById("username").textContent.substr(10);
+        userFunds = Number(document.getElementById("currency").textContent.substr(10));
+        var newFunds = userFunds + 10;
+        var updatedCurrency = {
+            currency: newFunds
+        }
+        updateUser(username, updatedCurrency);
     }
 
     remainingGuesses--;
