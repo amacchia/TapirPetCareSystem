@@ -1,107 +1,116 @@
 <!DOCTYPE html>
 <html>
 <Title>Pet</Title>
+
 <head>
-<link rel="Stylesheet"  href="../css/base.css"/>
+  <link rel="Stylesheet" href="../css/base.css" />
 
-<!--Firebae scripts must come before other scritps-->
-<script src="https://www.gstatic.com/firebasejs/5.5.3/firebase.js"></script>
-<script>
-  // Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyBVctVs-bh4ItOTNfrAYE2Ahd7PO1KLMRg",
-    authDomain: "tapir-pet-care-system.firebaseapp.com",
-    databaseURL: "https://tapir-pet-care-system.firebaseio.com",
-    projectId: "tapir-pet-care-system",
-    storageBucket: "tapir-pet-care-system.appspot.com",
-    messagingSenderId: "372234141465"
-  };
-  firebase.initializeApp(config);
-  	window.setInterval(function(){loadUser();}, 1000);
-</script>
+  <!--Firebae scripts must come before other scritps-->
+  <script src="https://www.gstatic.com/firebasejs/5.5.3/firebase.js"></script>
+  <script>
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyBVctVs-bh4ItOTNfrAYE2Ahd7PO1KLMRg",
+      authDomain: "tapir-pet-care-system.firebaseapp.com",
+      databaseURL: "https://tapir-pet-care-system.firebaseio.com",
+      projectId: "tapir-pet-care-system",
+      storageBucket: "tapir-pet-care-system.appspot.com",
+      messagingSenderId: "372234141465"
+    };
+    firebase.initializeApp(config);
+    window.setInterval(function () { loadUser(); }, 1000);
+  </script>
 
-<script type="text/javascript" src="../scripts/login.js"></script>
-<script type="text/javascript" src="../scripts/DatabaseUtils.js"></script>
+  <script type="text/javascript" src="../scripts/login.js"></script>
+  <script type="text/javascript" src="../scripts/DatabaseUtils.js"></script>
 
 </head>
+
 <body>
 
-<div class="header">
-  <h1>TAPIR CARING GAME</h1>
-  <p>Tapir Technology</p>
-</div>
+  <div class="header">
+    <h1>TAPIR CARING GAME</h1>
+    <p>Tapir Technology</p>
+  </div>
 
-<div class="topnav">
-  <a href="home.html">Home</a>
-  <a href="pet.html">Pet</a>
-  <a href="shop.html">Shop</a>
-  <a href="games.html">Games</a>
-  <a onclick="logOff()" style="float:right">Log Off</a>
-</div>
+  <div class="topnav">
+    <a href="home.html">Home</a>
+    <a href="pet.html">Pet</a>
+    <a href="shop.html">Shop</a>
+    <div class="dropdown">
+      <a class="dropbtn">Games</a>
+      <div class="dropdown-content">
+        <a href="games.html">Block Breaker</a>
+        <a href="number-game.html">Number Guessing Game</a>
+      </div>
+    </div>
+    <a onclick="logOff()" style="float:right">Log Off</a>
+  </div>
 
-<div class="page">
-<div class="row">
-  <div class="middlecolumn">
-    <div class="card">
-	<h2 id="username"></h2>
-    <p id="currency"></p>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-	      <canvas id="canvas" width="800" height="600"></canvas>
-	 <script src="../scripts/pet.js" type="text/javascript"></script>
-	
-	  <img id="img" src="" style="display: none;" />
-	       <div class="grid-container">
-	  <div id = "restart" style="display: none;" class="petcolor">
-		<p>Your pet is dead!</p>
-		<button type="button" id="restartSim" onclick="restart()">Restart</button>
-        <input id="rpetname" type="text" placeholder="Enter Pet name" name="pet name" required>
-        <input  type="radio" name="color" value="green" id="rgreen" checked>Green
-        <input  type="radio" name="color" value="blue" id="rblue">Blue
-        <input type="radio" name="color" value="red" id="rred"> Red<br>
+  <div class="page">
+    <div class="row">
+      <div class="middlecolumn">
+        <div class="card">
+          <h2 id="username"></h2>
+          <p id="currency"></p>
+          <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+          <canvas id="canvas" width="800" height="600"></canvas>
+          <script src="../scripts/pet.js" type="text/javascript"></script>
+
+          <img id="img" src="" style="display: none;" />
+          <div class="grid-container">
+            <div id="restart" style="display: none;" class="petcolor">
+              <p>Your pet is dead!</p>
+              <button type="button" id="restartSim" onclick="restart()">Restart</button>
+              <input id="rpetname" type="text" placeholder="Enter Pet name" name="pet name" required>
+              <input type="radio" name="color" value="green" id="rgreen" checked>Green
+              <input type="radio" name="color" value="blue" id="rblue">Blue
+              <input type="radio" name="color" value="red" id="rred"> Red<br>
+            </div>
+            <div id="info">
+              <p id="petName"></p>
+              <p id="petHealth"></p>
+              <div class="invo-container">
+                <div class="invo-item">
+                  <p id="invBall"></p>
+                  <p>
+                    Health: 70
+                  </p>
+                  <button type="button" id="btn_ball" onclick="useItem('ball')">Use Ball</button>
+                </div>
+                <div class="invo-item">
+                  <p id="invBrush"></p>
+                  <p>
+                    Health: 20
+                  </p>
+                  <button type="button" id="btn_brush" onclick="useItem('brush')">Use Brush</button>
+                </div>
+                <div class="invo-item">
+                  <p id="invKibble"></p>
+                  <p>
+                    Health: 50
+                  </p>
+                  <button type="button" id="btn_kibble" onclick="useItem('kibble')">Use Kibble</button>
+                </div>
+                <div class="invo-item">
+                  <p id="invShampoo"></p>
+                  <p>
+                    Health: 100
+                  </p>
+                  <button type="button" id="btn_shampoo" onclick="useItem('shampoo')">Use Shampoo</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-	  <div id="info">
-	  <p id="petName"></p>
-      <p id="petHealth"></p>
-	  <div class="invo-container">
-        <div class="invo-item">
-		  <p id="invBall"></p>
-          <p>
-            Health: 70
-          </p>
-          <button type="button" id="btn_ball" onclick="useItem('ball')">Use Ball</button>
-		</div>
-        <div class="invo-item">
-			<p id="invBrush"></p>
-            <p>
-               Health: 20
-            </p>
-          <button type="button" id="btn_brush" onclick="useItem('brush')">Use Brush</button>
-        </div>
-        <div class="invo-item">
-			<p id="invKibble"></p>
-            <p>
-              Health: 50
-            </p>
-          <button type="button" id="btn_kibble" onclick="useItem('kibble')">Use Kibble</button>
-        </div>
-        <div class="invo-item">
-			<p id="invShampoo"></p>
-            <p>
-              Health: 100
-            </p>
-          <button type="button" id="btn_shampoo" onclick="useItem('shampoo')">Use Shampoo</button>
-        </div>
-		</div>
-	  </div>
-      </div>
-	  </div>
     </div>
   </div>
-</div>
-</div>
+  </div>
 
-<div class="footer">
-</div>
+  <div class="footer">
+  </div>
 
 </body>
+
 </html>
